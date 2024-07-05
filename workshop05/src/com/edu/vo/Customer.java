@@ -7,6 +7,12 @@ public class Customer {
 	Address address;
 	
 	public Customer() {}
+	public Customer(String name, int ssn, Account account, Address address) {
+		this.name = name;
+		this.ssn = ssn;
+		this.account = account;
+		this.address = address;
+	}
 	public Customer(String name, int ssn) {
 		this.name = name;
 		this.ssn = ssn;
@@ -26,7 +32,7 @@ public class Customer {
 	public Address getaddress() {
 		return address;
 	}
-	public String customertoString() {
+	public String toString() {
 		return name+","+ssn;
 	}
 }

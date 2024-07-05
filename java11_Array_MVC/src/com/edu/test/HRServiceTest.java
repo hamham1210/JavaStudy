@@ -17,7 +17,7 @@ public class HRServiceTest {
 		SalesMan s = new SalesMan("Sal", 56666,1000, new MyDate(1992,3,1));
 	
 		service.addEmployee(e1);
-		service.printEmployee(e1);
+		service.addEmployee(e1);
 		
 	}
 
