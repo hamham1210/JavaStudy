@@ -30,7 +30,7 @@ public class BankService {
 		for (Customer c : customer) {
 			if (c == null)
 				break;
-			System.out.println(c.getaccount());
+//			System.out.println(c.getaccount());
 		}
 	}
 

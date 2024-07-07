@@ -50,8 +50,8 @@ public class BankTest {
 		System.out.println("도시");
 		String city = in.next();
 		
-		Customer c = new Customer(name,ssn,new Account(balance), new Address(zipCode,region,city));
-		BankService.getInstance().addCustomer(c);
+//		Customer c = new Customer(name,ssn,new Account(balance), new Address(zipCode,region,city));
+//		BankService.getInstance().addCustomer(c);
 	}
 
 }

@@ -9,7 +9,7 @@ public class ProductArrayTest2 {
 	/*
 	 * 1)객체생성하기 위한 Testclass 2)Application 를 호출하기 위한 start class
 	 */
-	OutletService service = new OutletService(null);
+	OutletService service = new OutletService();
 
 	public static void main(String[] args) {
 
