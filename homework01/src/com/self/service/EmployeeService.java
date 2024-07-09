@@ -95,14 +95,17 @@ public class EmployeeService {
 				if (mg == null) {
 					mg = m;
 				}
+
 				else {
 					System.out.println("대상이 없습니다.");
 					return null;
 				}
+
 			}
 		}
 		return mg;
 	}
+
 	public Manager[ ] findEmployee(int deptno) {
 		Manager[ ] temp = new Manager[ms.length];
 		for(Manager m : ms){

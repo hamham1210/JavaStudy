@@ -46,8 +46,10 @@ public class Manager {
 	public int getDeptno() {
 		return deptno;
 	}
+
 	public String toString() {
 		return name+","+birthDate.toString()+","+salary+","+dept+","+deptno;
+
 	}
 }
 

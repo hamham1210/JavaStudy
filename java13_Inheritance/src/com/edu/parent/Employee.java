@@ -15,6 +15,26 @@ public class Employee {
 		this.salary = salary;
 		this.mydate = mydate;
 	}
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	public MyDate getMydate() {
+		return mydate;
+	}
+	public void setMydate(MyDate mydate) {
+		this.mydate = mydate;
+	}
 	public String getDetails() {
 		return name+","+salary+","+mydate;
 	}
