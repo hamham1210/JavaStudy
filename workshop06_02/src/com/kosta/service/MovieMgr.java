@@ -32,9 +32,11 @@ public class MovieMgr {
 			if(m==null) break;
 			if(m.getTitle().contains(title)) {
 				nMovies[temp++]=m;
-			}
+			}//title이 들어있는 클래스 객체를 찾아서 m에 넣어둠
 		}//null 값을 추리기 위해서 다시 for문을 동작시킴
+		//m을 넣기 위해서 발생된 null값을 추리기 위해서 아래와 같이 동작시킴
 		Movie[] realMovies = new Movie[temp];
+		//배열에 temp길이 만큼의 배열을 재생성 후 배열을 다시 넣어준다.
 		for(int i=0; i<temp; i++)
 			realMovies[i] = nMovies[i];
 	
