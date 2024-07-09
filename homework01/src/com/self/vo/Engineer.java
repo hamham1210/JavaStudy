@@ -44,7 +44,9 @@ public class Engineer {
 	public MyDate getBirthDate() {
 		return birthDate;
 	}
-	public String getDetails() {
-		return name+","+getBirthDate()+","+salary+","+tech+","+bonus;
+
+	public String toString() {
+		return name+","+birthDate+","+salary+","+tech+","+bonus;
+
 	}	
 }

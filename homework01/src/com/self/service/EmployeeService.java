@@ -95,11 +95,17 @@ public class EmployeeService {
 				if (mg == null) {
 					mg = m;
 				}
+
+				else {
+					System.out.println("대상이 없습니다.");
+					return null;
+				}
+
 			}
 		}
 		return mg;
 	}
-	
+
 	public Manager[ ] findEmployee(int deptno) {
 		Manager[ ] temp = new Manager[ms.length];
 		for(Manager m : ms){
@@ -124,6 +130,9 @@ public class EmployeeService {
 				if (eg == null) {
 					eg = e;
 				}
+			}else{
+				System.out.println("대상이 없습니다.");
+				return null;
 			}
 		}
 			return eg;
@@ -190,6 +199,5 @@ public class EmployeeService {
 			System.out.println("이번달 생일자는 : " + String.join(", ", birthdayPeople));
 		}
 	}
-	
 }
 
