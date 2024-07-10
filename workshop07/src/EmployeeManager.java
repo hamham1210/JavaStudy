@@ -8,7 +8,7 @@ import com.edu.vo.Secretary;
 public class EmployeeManager {
 	private static final int MAX_EMPLOYEES = 10;
 	private Employee[] emps;
-	private int currentEmps;
+	private int currentEmps;s
 	
 	static private EmployeeManager service = new EmployeeManager();//1
 	private EmployeeManager() {
