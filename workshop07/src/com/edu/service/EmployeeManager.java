@@ -8,7 +8,7 @@ import com.edu.vo.Secretary;
 public class EmployeeManager {
 	private static final int MAX_EMPLOYEES = 10;
 	private Employee[] emps;
-	private int currentEmps;s
+	private int currentEmps;
 	
 	static private EmployeeManager service = new EmployeeManager();//1
 	private EmployeeManager() {
@@ -26,6 +26,11 @@ public class EmployeeManager {
 	
 	public Employee findEmployee(int empno) {
 		
+		for(Employee e : emps) {
+			if(e.getEmpId() == empno) {
+				return e;
+			}
+		}
 		return null;
 	}
 	
@@ -44,7 +49,7 @@ public class EmployeeManager {
 	}
 	
 	public void addEmployee(Employee e) {
-			
+			emps[currentEmps++] = e;
 	}
 
 	public int getTotalCost() {
@@ -78,7 +83,6 @@ public class EmployeeManager {
 	}
 	
 }
-
 
 
 
