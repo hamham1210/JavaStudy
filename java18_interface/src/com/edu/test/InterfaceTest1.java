@@ -18,6 +18,7 @@ public class InterfaceTest1 {
 		
 		Flyer[] f3 = new Flyer[3];//interface를 가지고 상속을 하여서 객체생성이 가능하다.
 		
+	
 		//class간의 상속은 필드 중심으로 상속이 이뤄지고 interface간의 상속은 기능 중심으로 상속이 이뤄진다.
 		//둘 다 상속의 부모이고 그 둘을 타입으로 객체를 생성가능하다.
 
