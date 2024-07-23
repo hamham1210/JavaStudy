@@ -16,6 +16,12 @@ public class EmployeeServiceTest {
 		employees.add(new Employee(4,"KING",50000.0));
 		
 		EmployeeService service = new EmployeeService();
+		
+		Consumer<Employee> consumer  = i ->{
+			i.setSalary(i.getSalary()*1.15);
+		};
+		service.raiseSalary(consumer.andThen(System.out::println), employees);
 	}
-
+	
+	
 }
