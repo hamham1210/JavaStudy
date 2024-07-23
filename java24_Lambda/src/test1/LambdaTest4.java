@@ -4,10 +4,11 @@ package test1;
  * 더 간결한 코드로 작성해보기
  *	@FunctionalInterface
  *
- *	1) 매개변수 o, 반환타입 x
- *	2) 매개변수 x, 반환타입 o
- *	3) 매개변수 o, 반환타입 o
- *	4) 매개변수 o, 반환타입 boolean
+ *	1) 매개변수 x, 반환타입 x Runnable  void run()
+ *	2) 매개변수 o, 반환타입 x	 Consumer  void accept(T) (i)매개변수 o -> print i 반환타입 x
+ *	3) 매개변수 x, 반환타입 o	 Supplier  T get() (매개변수 x)-> (int)반환타입 o
+ *	4) 매개변수 o, 반환타입 o Function  T apply(T) (i)매개변수 o -> i*100반환타입 o
+ *	5) 매개변수 o, 반환타입 boolean	Predicate boolean test(T) (i)매개변수 o -> i%2==0반환타입 o
  *
  * */
 
