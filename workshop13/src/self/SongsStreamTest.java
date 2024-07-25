@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.management.RuntimeErrorException;
+
 public class SongsStreamTest {
 
 	public static void main(String[] args) {
@@ -61,8 +63,24 @@ public class SongsStreamTest {
 					.filter(i->i.getYear()==1995)
 					.findFirst()
 					.orElseThrow(RuntimeException::new);
+		System.out.println("-------------------------------------------------------------");
+		Optional<Song> result3 = songs.stream()
+				.filter(i->i.getYear()==1995)
+			.findFirst();
+		if(result3.isPresent())
+		{
+			
+		}else {}
 			//없는 객체를 가져올 수 없어서 Optional로 담아야만 findFirst를 쓴다.
 			System.out.println(song19952);
+			
+			
+	
+		
+			
+			
+			
+			
 	}
 }
 

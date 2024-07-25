@@ -1,5 +1,15 @@
 package step2;
-
+/*
+ * 중간처리 연산자
+ * map
+ * mapToInt | mapToDouble
+ * peek
+ * distinct
+ * filter
+ * limit
+ * 
+ * 
+ * */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +40,21 @@ public class Stream01StudentTest {
 				.getAsDouble();
 		System.out.println("Result Avg 1"+avg);
 		
+		//map Stream내 값들을 변환해서 새로운 스트림을 생성하는 기능
+		long count= students.stream()
+		.map(student-> student.getName())
+		.filter(student-> student.equals("SCOTT"))
+		.peek(student-> System.out.println(student+ " peek"))
+		.count();
 		
+		
+		System.out.println("학생 수 "+ count);
+		
+		System.out.println("-------------------------anyMatch | filter와 구분----------------------------------");
+		boolean find = students.stream()
+				.anyMatch(s->s.getName().equals("King"));
+		
+		System.out.println("King이 멤버로 존재합니까?"+find);
 	}
 
 }
