@@ -22,8 +22,10 @@ public class Stream01StudentTest {
 		List<Student> students = Arrays.asList(
 				new Student("SCOTT", 90),
 				new Student("Blake", 92),
-				new Student("Smith", 83)
+				new Student("Smith", 83),
+				new Student("marry", 83)
 				);
+		
 		
 		Stream<Student> studentStream = students.stream();
 		
