@@ -1,9 +1,33 @@
-<mxfile host="app.diagrams.net" modified="2024-07-31T01:13:27.765Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" version="24.6.4" etag="5xcLI27P63rxPgy8yvBq" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-31T01:34:15.604Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36" etag="bWQbPH3MsGuDXpCFRTnO" version="24.6.4" type="github">
   <diagram name="페이지-1" id="CciCVtvtBfTwLkn2541Y">
-    <mxGraphModel>
+    <mxGraphModel dx="2234" dy="1196" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="TG6LxyWAjkSXxD4-gocW-1" value="사용자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="-546" y="-100" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="TG6LxyWAjkSXxD4-gocW-7" value="세탁하다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-317" y="194" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TG6LxyWAjkSXxD4-gocW-8" value="이불세탁하다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-19" y="-45" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TG6LxyWAjkSXxD4-gocW-9" value="쾌속세탁하다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-19" y="55" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TG6LxyWAjkSXxD4-gocW-10" value="헹군다." style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-19" y="149" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TG6LxyWAjkSXxD4-gocW-11" value="세제를 넣는다." style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-19" y="243" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TG6LxyWAjkSXxD4-gocW-12" value="냉수,온수 선택하다." style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-19" y="337" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TG6LxyWAjkSXxD4-gocW-13" value="탈수한다." style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-19" y="426" width="120" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
