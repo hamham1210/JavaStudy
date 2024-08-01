@@ -10,7 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import com.edu.confing.Config;
 import com.edu.vo.Book;
@@ -48,64 +53,11 @@ public class BookDAO {
 		if(rs != null) rs.close();
 	}
 	
-	public void insertBook(Book book) throws DuplicateNumException, DMLException {
-		String query = "INSERT INTO BOOK(isbn, title, author, publisher, price, description) VALUES(Rpad(?,8,' '), ?, ?, ?, ?, ?)";
-		try(Connection con = getConnection(); PreparedStatement p = con.prepareStatement(query) ){
-			p.setString(1, book.getIsbn());
-			p.setString(2,book.getTitle());
-			p.setString(3,book.getAuthor());
-			p.setString(4, book.getPublisher());
-			p.setInt(5, book.getPrice());
-			p.setString(6, book.getDescription());
-			//바인딩
-			
-			System.out.println("[Result ok message] =>"+p.executeUpdate()+"책 정보를 추가 했습니다.");
-		}
-			catch(SQLIntegrityConstraintViolationException e){ //중복오류
-				throw new DuplicateNumException("[Result error message] => 이미 있는 책정보입니다.");
-			}catch(SQLException e) {// 문법오류 
-				 e.printStackTrace(); 
-				throw new DMLException("[Result error message] =>책정보 등록 실패");
-			}
-		}
-
-	public void updateBook(Book book)throws DuplicateNumException, DMLException {
-		String query = "update book set title=?, author= ?,publisher=?,price=?,description=? where isbn=?";
-		try(Connection con = getConnection(); PreparedStatement p = con.prepareStatement(query) ){	
-		p.setString(1, book.getTitle());
-		p.setString(2, book.getAuthor());
-		p.setString(3, book.getPublisher());
-		p.setInt(4, book.getPrice());
-		p.setString(5, book.getDescription());
-		p.setString(6, book.getIsbn());
-		
-	System.out.println(p.executeUpdate()+"업데이트 성공");	
-		
-	}
-		catch(SQLIntegrityConstraintViolationException e){
-			throw new DuplicateNumException("이미 있는 책정보입니다.");
-		}catch(SQLException e) {
-			 e.printStackTrace(); 
-			throw new DMLException("책정보 등록 실패");
-		}
-	}
 	
-public void deleteBook(String isbn)throws DuplicateNumException, DMLException,RecordNotException {
-	String query = "DELETE FROM book WHERE isbn=?";
-	try(Connection con = getConnection(); PreparedStatement p = con.prepareStatement(query)){
-		p.setString(1, isbn);
-		
-		if(p.executeUpdate() == 0)
-		throw new RecordNotException();
-		System.out.println(p.executeUpdate()+"삭제 성공");
-	}
-	catch(SQLIntegrityConstraintViolationException e){
-		throw new DuplicateNumException("이미 있는 책정보입니다.");
-	}catch(SQLException e) {
-		  
-		throw new DMLException("책 삭제 실패");
-	}
-	}
+
+	
+	
+
 
 public Book findBook(String isbn)throws DuplicateNumException, DMLException, RecordNotException {
 	Book book = null;
@@ -295,6 +247,81 @@ public Book findBook(String isbn)throws DuplicateNumException, DMLException, Rec
 			throw new DMLException("책 정보를 찾지 못했습니다.");
 		}
 	
+	}
+	// Book과 Author 테이블을 JOIN하여 도서명, 가격, 저자명을 검색하는 기능을 구현한다. 
+	
+	public List<String> showBookList() throws DMLException {
+		List<String> list = new ArrayList<>();
+		String query = "SELECT concat(b.title,',', b.price,',', a.name) from book b,author a where b.authorno = a.authorno;";
+		try(Connection con = getConnection(); PreparedStatement p = con.prepareStatement(query); ){
+			ResultSet rs = p.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString("concat(b.title,',', b.price,',', a.name)"));
+			};
+		}catch(SQLException e){
+			e.printStackTrace();
+			throw new DMLException("책 정보를 찾지 못했습니다.");
+		}
+		return list;
+	}
+	// 이름이 ‘ 김XX ’인 저자의 도서명, isbn, 출판사를 출력하는 기능을 작성한다. 
+	public List<Book> searchBookByLastname(String lastname) throws DMLException {
+		List<Book> list = new ArrayList<>();
+		String query = "SELECT a.name,b.title,b.isbn ,b.publisher from book b, author a where b.authorno = a.authorno and name like ?";
+		try(Connection con = getConnection(); PreparedStatement p = con.prepareStatement(query); ){
+			
+			p.setString(1,  lastname + "%");
+			ResultSet rs = p.executeQuery();
+			while(rs.next()) {
+				list.add(new Book(rs.getString("b.isbn"),
+						rs.getString("b.title"),
+						rs.getString("a.name"),
+						rs.getString("b.publisher")));	
+			};
+		}catch(SQLException e){
+			e.printStackTrace();
+			throw new DMLException("책 정보를 찾지 못했습니다.");
+		}
+		return list;
+		
+	}
+	//Author 테이블에 있는 저자명 별로 출간된 도서들을 도서명, 출판사, 가격,저자명을 출력하는 기능을 구현한다.
+	
+	public List<Book>  searchByName() throws DMLException {
+		
+		List<Book> list = new ArrayList<>();
+	
+		String query = "SELECT b.title,b.publisher,b.price,a.name from book b, author a where b.authorno = a.authorno ORDER BY a.name;";
+		
+		try(Connection con = getConnection(); PreparedStatement p = con.prepareStatement(query); ){
+			ResultSet rs = p.executeQuery();
+			while(rs.next()) {
+				list.add(new Book(null,rs.getString("b.title"),
+						rs.getString("a.name"),
+						rs.getString("b.publisher"),
+						rs.getInt("b.price"),null));	
+			};
+		
+		}catch(SQLException e){
+			e.printStackTrace();
+			throw new DMLException("책 정보를 찾지 못했습니다.");
+		}
+		List<Book> filteredObjects = list.stream()
+	            .filter(obj -> obj.getIsbn() != null && obj.getDescription() != null)
+	            .collect(Collectors.toList());
+		System.out.println(filteredObjects);
+			return filteredObjects;
+		}
+	
+	
+	
+	
+	
+//	 6. Book 테이블에 있는 title와 publisher를 이용하여 서로의 관계를 다음과 같이
+//	 출력되도록 기능을 구현한다. ( ‘IoT세상은 미래닷컴에서 출판했다’)
+
+	public void printTitle(String title, String publisher) {
+		
 	}
 }
 
