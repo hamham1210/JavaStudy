@@ -296,21 +296,17 @@ public Book findBook(String isbn)throws DuplicateNumException, DMLException, Rec
 		try(Connection con = getConnection(); PreparedStatement p = con.prepareStatement(query); ){
 			ResultSet rs = p.executeQuery();
 			while(rs.next()) {
-				list.add(new Book(null,rs.getString("b.title"),
+				list.add(new Book(rs.getString("b.title"),
 						rs.getString("a.name"),
 						rs.getString("b.publisher"),
-						rs.getInt("b.price"),null));	
+						rs.getInt("b.price")));
 			};
 		
 		}catch(SQLException e){
 			e.printStackTrace();
 			throw new DMLException("책 정보를 찾지 못했습니다.");
 		}
-		List<Book> filteredObjects = list.stream()
-	            .filter(obj -> obj.getIsbn() != null && obj.getDescription() != null)
-	            .collect(Collectors.toList());
-		System.out.println(filteredObjects);
-			return filteredObjects;
+			return list;
 		}
 	
 	
@@ -320,8 +316,21 @@ public Book findBook(String isbn)throws DuplicateNumException, DMLException, Rec
 //	 6. Book 테이블에 있는 title와 publisher를 이용하여 서로의 관계를 다음과 같이
 //	 출력되도록 기능을 구현한다. ( ‘IoT세상은 미래닷컴에서 출판했다’)
 
-	public void printTitle(String title, String publisher) {
-		
+	public List<Book> printTitle() throws DMLException {
+		List<Book> list = new ArrayList<>();
+		String query = "select title, publisher from book;";
+		try(Connection con = getConnection(); PreparedStatement p = con.prepareStatement(query); ){
+			ResultSet rs = p.executeQuery();
+			while(rs.next()) {
+				list.add(new Book(rs.getString("title"),rs.getString("publisher")));
+			};
+
+		}catch(SQLException e){
+			e.printStackTrace();
+			throw new DMLException("책 정보를 찾지 못했습니다.");
+		}
+		return list;
 	}
+
 }
 
