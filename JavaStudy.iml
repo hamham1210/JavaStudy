@@ -12,6 +12,7 @@
       <sourceFolder url="file://$MODULE_DIR$/workshop06_02/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/workshop07/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/workshop09/self" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/java23_Generic/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
