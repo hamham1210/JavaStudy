@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Insert title here</title>
+<style type="text/css">
+	body{
+		margin: 50px;
+		border:3px solid SlateBlue;
+	}
+	h2{
+	margin-top:5px;
+	margin-left :200px;
+	}
+	img{
+		width : 250px;
+		height : 300px;
+		margin-left :250px;
+	}
+	#select_theater{
+		margin-left :50px;
+		margin-top :10px;
+	}
+	fieldset{
+		margin-left : 50px;
+		margin-right : 50px;
+		margin-bottom : 50px;
+		border : 1px solid gray;
+	}
+	
+	#rate{
+		margin-left : 50px;
+	}
+	#select_detail{
+		margin-left : 20px;
+	}
+	#select_member{
+		margin-left:30px;
+	}
+	#select_total{
+		margin-left:30px;
+		margin-top:10px;
+	}
+	#select_option{
+		margin-left:30px;
+		margin-top:10px;
+	}
+	#select_details{
+		margin-top:10px;
+	}
+</style>
+</head>
+<body>
+<h2>★★★★ 인사이드 아웃2★★★★ </h2>
+<img id = "img" alt="inside2" src="./image/inside.jpg">
+<div id = "select_theater">
+<form id = "frm"action="">
+<label for="theater">상영관 :</label> 
+	<select name="movieselect" id="lang">
+    <option value="CGV">CGV</option>
+    <option value="메가박스">메가박스</option>
+    <option value="롯데시네마">롯데시네마</option>
+  </select>
+<label for="select_date">날짜 선택 :</label>
+  <input type="date" id="date" name="date">
+</form>
+</div>
+
+<form id = "select_time"action="">
+	<fieldset>
+	<legend>시간 선택</legend>
+	<input type = "radio" name ="time" value="8:30"> 8:30
+	<input type = "radio" name ="time" value="11:00"> 11:00
+	<input type = "radio" name ="time" value="11:00"> 14:20
+	<input type = "radio" name ="time" value="11:00"> 17:25
+	<input type = "radio" name ="time" value="11:00"> 20:10
+	<input type = "radio" name ="time" value="11:00"> 23:05
+	</fieldset>
+</form>
+
+<div id= "rate">
+<p >요금 <del>￦9,000</del> <u>￦5,000</u></p>
+</div>
+
+<form id = "select_detail"action="">
+<div id ="select_member" >
+<label for="select_member">인원</label>
+<input type = "text" name ="member" id = "member" value="0" required="required">
+</div>
+<div id ="select_total">
+<label for="select_total">금액</label>
+<input type = "text" name ="total" id = "total" value="0" required="required">
+</div>
+<div id ="select_option">
+<input type="checkbox" id="option" name="option" value="option">
+<label for="select_option">옵션</label>
+</div>
+</form>
+
+<form id = "select_details"action="">
+<fieldset>
+<label for="select_popcorn">팝콘</label>
+<input type = "checkbox" name ="member" id = "member" value="member" required="required">
+<label for="select_cola">콜라</label>
+<input type="checkbox" id="option" name="option" value="option">
+</fieldset>
+</form>
+
+</body>
+</html>
