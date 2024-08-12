@@ -2,17 +2,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
+<style type="text/css">
+#parent {
+	border: 2px solid tomato;
+	padding: 10px;
+	overflow: hidden;
+	width: 500px;
+}
+
+#child {
+	margin: 0px;
+	float: left;
+	border: 2px solid pink;
+}
+
+#article {
+	margin-right: 43%;
+	float: right;
+	border: 2px solid green;
+	height: 30px;
+	padding: 10px;
+	float: right;
+}
+</style>
 </head>
 <body>
-<div id="parent">
-	<div id="child">
-			KOSTA 284기 데브옵스 과정
-	</div>	
-</div>
-<div id="article">
-	2024-08-09 Today FrontUI Schedule
-</div>
+	<div id="parent">
+		<div id="child">KOSTA 284기 데브옵스 과정</div>
+	</div>
+	<div id="article">2024-08-09 Today FrontUI Schedule</div>
 </body>
 </html>
