@@ -1,0 +1,33 @@
+
+<!--  변수
+ㅣㅣ::
+전역변수
+멤버ㅅㅅ후
+지역변수
+상수
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>title</title>
+<script type="text/javascript">
+	var name = "Peter";
+	myName = "James"; //var 안 붙임. 자동으로 전역변수가 된다.
+	console.log(name);
+	console.log(myName);
+	showInfo();
+	function showInfo() {
+		var age = 33;//지역변수
+		myAge = 22;//지역변수 X, 전역변수 사용
+		console.log("name" + name + "," + age);
+		console.log("name" + myName + "," + myAge);
+	}
+	
+	// console.log("name1" + name + "," + age); 이건 에러 남
+	console.log("name2" + myName + "," + myAge);//이건 에러 안남
+</script>
+</head>
+<body>
+</body>
+</html>

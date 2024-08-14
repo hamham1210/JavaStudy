@@ -1,0 +1,33 @@
+
+<!--  변수
+ㅣㅣ::
+전역변수
+멤버ㅅㅅ후
+지역변수
+상수
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>title</title>
+<script type="text/javascript">
+	const name = "Peter";
+	const myName = "James";
+	console.log(name);
+	console.log(myName);
+	showInfo();
+	function showInfo() {
+		let age = 33;
+		let myAge = 22;
+		console.log("name" + name + "," + age);
+		console.log("name" + myName + "," + myAge);
+	}
+
+	// console.log("name1" + name + "," + age); 이건 에러 남
+	console.log("name2" + myName + "," + myAge);//이건 에러 안남
+</script>
+</head>
+<body>
+</body>
+</html>

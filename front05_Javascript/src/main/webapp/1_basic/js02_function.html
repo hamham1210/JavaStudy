@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	//1.선언적 함수 재정의
+	//미리 메모리에 올라가기 때문에 호출 라인은 상관없다.
+	func();
+	function func() {
+		alert("func A....");
+	}
+	function func() {
+		alert("func B....");
+	}
+	//2.익명 함수 재정의
+
+	var func = function func() {
+		alert("func A....");
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>
