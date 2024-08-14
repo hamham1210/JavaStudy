@@ -1,0 +1,43 @@
+<!-- 
+1. 복합연산자( a+ = '')
+2. innerHTML
+3. querySelector(),getElement()
+
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = ()=>{
+	var list = '';
+
+	list += '<ul>';
+	list += '<li>아메리카노</li>';
+	list += '<li>라떼</li>';
+	list += '<li>카라멜마끼아또</li>';
+	list += '<li>카페모카</li>';
+	list += '</ul>'
+
+	//2.document 특징 엘레먼트를 찾아서
+	/* document.getElemntById("wrap").innerHTML = list; */
+	document.querySelector("#wrap").innerHTML = list;
+}
+	
+</script>
+
+</head>
+<body>
+	<h2 align="center">================onload========================</h2>
+	<div id="wrap"></div>
+</body>
+
+<!--  window.onload는
+html의 모든 
+stript 실행순저
+onload
+
+-->
+
+</html>

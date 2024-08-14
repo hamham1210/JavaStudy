@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="main">
+		<input type="text" id="id"> <input type="password" id="pwd">
+		<button id="login-btn">LOGIN</button>
+	</div>
+	<script type="text/javascript">
+	/*  idForm,pwdForm 값이 아니라 폼 객체이다. */
+		const idForm = document.getElementById("id");
+		const pwdForm = document.getElementById("pwd");
+		const loginBtn = document.getElementById("login-btn");
+	
+		/* 버튼을 클릭하면 idForm,pwdForm에 입력된 값을 받아서 출력 */
+		loginBtn.addEventListener('click',()=>{
+			//1. alert창으로 폼에 입력된  id, pwd값을 출력
+			alert(idForm.value);
+			alert(pwdForm.value);
+			//2. 로컬스토리지에 "id","pass"각각 이름으로 값을 저장			
+			/* 
+			로컬 스토리지에 저장할 때 주의 점이 있다. 오직 문자형 String데이타 타입만 지웒낟.
+			지금처럼 userInfo 즉{}객체 형식으로 저장하게된다면 [Object Object]이런 JSON형태로 저장된다.
+			1)로컬스토리지에 데이터를 쓸때는 저장할딸는 JSON.stringify(userInrof)-- 직렬화
+			2)로컬스토리지에 저장된 데이터를 읽어올 때는 받아올 때는 Json.parse -- 역직렬화
+			
+			*/
+			let userInfo = {id: idForm.value, pass:pws.value};
+			localStorage.setItem("userInfo", JSON.srtinglyfidne,userInfo);
+			let result = JSON.parse(localStroage.getItem("userInfo"));
+			cosole.log('ID ==>'+result.id);
+			cosole.log('PASS ==>'+result.pass);
+		});
+		
+		</script>
+</body>
+</html>
