@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<title>A항공사</title>
+<style type="text/css">
+.container {
+	width: 1000px;
+	height: 600px;
+	border: 1px solid lightgray;
+	padding-left: 150px;
+	padding-top: 100px;
+}
+</style>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<h1>우리반 베라 선호 현황</h1>
+	</div>
+	<div class="container">
+		<div id="myChart"
+			style="width: 100%; max-width: 800px; height: 500px;"></div>
+	</div>
+	<script>
+		google.charts.load('current', {
+			'packages' : [ 'corechart' ]
+		});
+		google.charts.setOnLoadCallback(drawChart);
+
+		function drawChart() {
+
+			// Set Data
+			const data = google.visualization.arrayToDataTable([
+					[ 'Icecream', 'Count' ], [ '뉴욕치즈케이크', 2 ], [ '민트초코봉봉', 3 ],
+					[ '녹차', 1 ], [ '요거트', 2 ], [ '피스타치오', 1 ],
+					[ '소금우유아이스크림', 1 ] ]);
+
+			// Set Options
+			const options = {
+				is3D : true,
+				colors : [ '#E5D34D', '#9CF6C7', '#C0D52F', '#FFFFFF',
+						'#72BFA3', '#F3F3DB' ],
+				pieSliceTextStyle : {
+					color : '#333', // 텍스트 색상을 흰색으로 설정
+					fontSize : 14, // 폰트 크기
+					bold : true, // 볼드체 설정
+				},
+				legend : {
+					position : 'right', // 범례 위치 설정 (right, left, top, bottom, none)
+					textStyle : {
+						color : '#000000', // 범례 텍스트 색상
+						fontSize : 14
+					// 범례 텍스트 크기
+					}
+				}
+			};
+
+			// Draw
+			const chart = new google.visualization.PieChart(document
+					.getElementById('myChart'));
+			chart.draw(data, options);
+
+		}
+	</script>
+
+</body>
+</html>
+
