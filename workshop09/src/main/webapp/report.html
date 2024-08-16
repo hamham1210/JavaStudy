@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<title>A항공사</title>
+<style type="text/css">
+.container {
+	width: 1000px;
+	height: 600px;
+}
+</style>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<h1>A항공사 년도별 승객 수 누적현황 챠트 통계</h1>
+	</div>
+	<div class="container">
+		<canvas id="bar-chart"></canvas>
+	</div>
+</body>
+<script type="text/javascript">
+	const ctx = document.getElementById('bar-chart');
+	let xValues = [ "1월 승객수", "2월 승객수", "3월 승객수", "4월 승객수", "5월 승객수", "6월 승객수",
+			"7월 승객수", "8월 승객수", "9월 승객수", "10월 승객수", "11월 승객수", "12월 승객수" ];
+	let data_2022 = {
+		label : '2022년',
+		data : [ 100, 100, 110, 115, 100, 118, 119, 120, 120, 99, 89, 100 ],
+		backgroundColor : 'rgba(220, 20, 60,0.5)',
+		borderColor : 'crimson',
+		borderWidth : 2,
+	};
+	let data_2023 = {
+		label : '2023년',
+		data : [ 100, 100, 120, 110, 120, 120, 130, 145, 110, 100, 100, 120 ],
+		backgroundColor : 'rgba(106, 90, 205,0.5)',
+		borderColor : 'SlateBlue',
+		borderWidth : 5,
+	};
+
+	let config = {
+		type : 'bar',
+		data : {
+			labels : xValues,
+			datasets : [ data_2022, data_2023 ]
+		},
+		options : {
+			maintainAspectRatio : false,
+			scales : {
+				x : {
+					ticks : {
+						minRotation : 45,
+						maxRotation : 45
+					}
+				}
+			}
+		}
+	};
+	new Chart(ctx, config);
+</script>
+</html>

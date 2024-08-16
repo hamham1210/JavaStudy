@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>A��怨듭�� ����</title>
+<!--chartJS CDN  -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<style type="text/css">
+.container {
+	width: 350px;
+	height: 350px;
+	margin-top: 350px;
+	margin-left: 170px;
+	border: 1px solid #ddd;
+	padding: 40px;
+	border-radius: 8px;
+	display: inline-block;
+	border: 1px solid #ddd;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<canvas id="line-chart"></canvas>
+	</div>
+	<!-- 하나 더 만든다. -->
+	<div class="container">
+		<canvas id="bar-chart"></canvas>
+	</div>
+	<script>
+		const ctx = document.getElementById('line-chart');
+		const ename = [ 'SMITH', 'FORD', 'TURNER', 'KING', 'ADAMS' ];
+		let emp_sal_data = {
+			label : 'Employee Salary',
+			data : [ 1200, 3000, null, 5000, 2600 ],
+			backgroundColor : 'rgba(255, 99, 132, 0.5)',
+			borderColor : 'rgb(255, 99, 132)',
+			borderWidth : 5,
+			pointRadius : 13,
+			pintHoverRadius : 10,
+			//1. point스타일을 삼각형로 바꾸기
+			poinstyle : 'triangle',
+			//2. 그래프의 라인은 다 없애고 값만 나오게
+			/*    showLine:false, */
+			//3.Turner가 신입사원이라서 급여가 없어서 null이라면
+			spanGaps : true,
+		//4.라인형식이 아닌 계단혁식
+		/* stepped:true, */
+		};
+		//let config에 각각 담는다.
+		let config = {
+			type : 'line',
+			data : {
+				labels : ename,
+				datasets : [ emp_sal_data ]
+			},
+			options : {
+				maintainAspectRatio : false
+			}
+		};
+
+		new Chart(ctx, config);
+		const ctx2 = document.getElementById('bar-chart');
+
+		//let config에 각각 담는다.
+		let config2 = {
+			type : 'bar',
+			data : {
+				labels : ename,
+				datasets : [ emp_sal_data ]
+			},
+			options : {
+				maintainAspectRatio : false
+			}
+		};
+
+		new Chart(ctx2, config2);
+	</script>
+</body>
+</html>

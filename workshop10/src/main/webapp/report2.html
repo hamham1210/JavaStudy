@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="EUC-KR">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<title>A항공사</title>
+<style type="text/css">
+.container {
+	width: 1000px;
+	height: 600px;
+	border: 1px solid lightgray;
+}
+</style>
+</head>
+<body>
+	<div class="jumbotron text-center">
+		<h1>A항공사 상반기 승객수 챠트</h1>
+	</div>
+	<div class="container">
+		<canvas id="bar-chart"></canvas>
+	</div>
+</body>
+<script type="text/javascript">
+	const ctx = document.getElementById('bar-chart');
+	let xValues = [ "1월 승객수", "2월 승객수", "3월 승객수", "4월 승객수", "5월 승객수", "6월 승객수",
+			"7월 승객수" ];
+	let data_2022 = {
+		axis : 'y',
+		data : [ 100, 100, 110, 115, 100, 118, 119 ],
+		backgroundColor : [ 'rgba(220, 20, 60,0.2)', 'rgba(220, 20, 60,0.1)',
+				'rgba(220, 20, 60,0.4)', 'rgba(220, 20, 60,0.6)',
+				'rgba(220, 20, 60,0.2)', 'rgba(220, 20, 60,0.7)',
+				'rgba(220, 20, 60,0.9)' ],
+		borderColor : 'Slateblue',
+		borderWidth : 2,
+	};
+
+	let config = {
+		type : 'bar',
+		data : {
+			labels : xValues,
+			datasets : [ data_2022 ]
+		},
+		options : {
+			 plugins:{
+			legend : {
+				display : false
+			}},//범례 제거 부분 최신 버전에서는 plugins를 꼭 감싸줘야한다.
+			indexAxis : 'y',
+			//수평 맞추는 부분
+			maintainAspectRatio : false,
+			scales : {
+				x : {
+					ticks : {
+						minRotation : 45,
+						maxRotation : 45
+					}
+				}
+			}
+		}
+	};
+	new Chart(ctx, config);
+</script>
+</html>
