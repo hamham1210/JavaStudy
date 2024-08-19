@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>2. addEventListener 사용</title>
+<style type="text/css"></style>
+</head>
+<body>
+	<h1>JavaScript란?</h1>
+	<P id="content">JavaScript를 사용해서 HTML Body 부분의 내용을 변경합니다.</P>
+	<button>CLICK ME</button>
+</body>
+<script type="text/javascript">
+ let btn = document.querySelector("button");
+ btn.addEventListener('click',()=>{
+	let contnet = document.querySelector("#content");
+	content.innerHTML= "<H3><font color=red>Hello JavaScript Event</font></H3>";
+});
+</script>
+</html>

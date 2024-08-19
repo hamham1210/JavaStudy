@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>forEach</title>
+    <script>
+      //id 속성 | class 속성
+      function choiceMenu() {
+        let str = "";
+        document.querySelectorAll(".menu").forEach((item) => {
+          if (item.checked) str += item.value + " ";
+          item.checked = false;
+        });
+        //querySelector 하나만 있을 때 사용 | querySelectorAll 해당하는 것 전부 다 받아옴 (Array가 리턴됨)
+        if (str == "") alert("하나 이상의 메뉴를 선택하세요");
+        else alert(str);
+      }
+      //this는 현재 이벤트가 적용되고 있는 태그 자기자신을 가리킴
+      onload = () => {
+        document.querySelectorAll(".menus").forEach(function (item) {
+          item.onclick = function () {
+            let id = this.closest(".main-menu").attributes["id"].value;
+            alert(id);
+          };
+        });
+        /*
+        document.querySelectorAll(".menus").forEach((item) => {
+          item.onclick = () => {
+            let id = this.closest(".main-menu").attributes["id"].value;
+            alert(id);
+          };
+        });
+        */
+        //arrow 함수의 this는 다른 범위를 가리킴 => arrow 함수를 쓸 때는 this를 안 쓰는 것이 좋음
+      };
+    </script>
+  </head>
+
+<body>
+	<h2>CheckBox Form..</h2>
+	<form action="#" name="frm">
+
+		<strong>오늘 점심 드시고 싶은 메뉴를 고르세요. </strong><br> <br> <input
+			type="checkbox" name="menu" value="초밥" class="menu">초밥<br>
+		<input type="checkbox" name="menu" value="우동" class="menu">우동<br>
+		<input type="checkbox" name="menu" value="짜장면" class="menu">짜장면<br>
+		<input type="checkbox" name="menu" value="카레라이스" class="menu">카레라이스<br>
+		<input type="button" value="선택" onclick="choiceMenu()">
+
+
+	</form>
+
+</body>
+</html>
