@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function changeLine() {
+		//1.select폼을 받아와서 ... 변수 subway에 할당
+		let subway = document.querySelector("#subway");
+		//2.폼에서 선택한 값을 alert창으로 출력
+		if (subway.value != null)
+			alert("당신이 출근시 이용한 호선은 " + subway.value + "입니다.");
+		else
+			alert("당신이 출근한 호선을 선택해주세요. ");
+	};
+</script>
+</head>
+<body>
+	<h2>select form...</h2>
+
+	<form action="#" name="frm">
+		<!-- select폼은 click이벤트 적용하면 안됨 -->
+		<select id="subway" onchange="changeLine()">
+			<option value="=====">===== 지하철 호선 ====</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
+	</form>
+</body>
+</html>
