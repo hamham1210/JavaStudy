@@ -32,7 +32,7 @@ h1 {
 		const ctx = document.getElementById('line-chart');
 		const ename = [ 'SMITH', 'FORD', 'TURNER', 'KING', 'ADAMS' ];
 		
-		new Chart(ctx, {
+		let myChart = new Chart(ctx, {
 			type : 'bar',
 			data : {
 				labels : ename,

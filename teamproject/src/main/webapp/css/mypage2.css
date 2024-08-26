@@ -1,0 +1,309 @@
+@import url("//fonts.googleapis.com/earlyaccess/jejumyeongjo.css");
+
+@font-face {
+  font-family: "SpoqaHanSansNeo-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "jejumyeongjo";
+  src: url("//fonts.googleapis.com/earlyaccess/jejumyeongjo.css");
+}
+
+/* * {
+  border: 1px solid #898989;
+} */
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  font-family: "SpoqaHanSansNeo-Regular";
+}
+
+body {
+  background-color: rgba(254, 248, 240, 1);
+  /* padding-top: 5px; */
+  display: grid;
+  grid-template-columns: 0.5fr 10fr;
+  font-family: "SpoqaHanSansNeo-Regular";
+  display: flex;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #202020;
+}
+
+.sideBar {
+  /* float: left;
+  flex-grow: 1;
+  min-width: 289px;
+  max-width: 15%;
+  padding-top: 50px;
+  padding-left: 10%;
+  background: #f3e8dc;
+  border-radius: 0 20px 20px 0; */
+  /* 삭제 - 지남 */
+
+  float: left;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 289px;
+  /* min-width: 200px;
+  max-width: 15%; */
+
+  padding-top: 50px;
+  padding-left: 45px;
+  /* padding-left: 3%; */
+
+  background: #f3e8dc;
+  border-radius: 0 20px 20px 0;
+
+  font-size: large;
+  font-weight: bold;
+  /* 추가 - 지남 */
+}
+
+.sideBar > .menu a {
+  text-decoration: none;
+  color: #202020;
+}
+.sideBar > .wellcomeMsg {
+  font-size: medium;
+  margin-bottom: 16px;
+}
+.travelGuide {
+  font-weight: 500;
+  color: #7a7a7a;
+  display: none;
+  margin-top: 27px;
+}
+.travelGuide > p {
+  margin: 0;
+}
+#travelGuide {
+  list-style: none;
+  padding: 0;
+}
+/* .sideBar > ul > li > p {
+    margin-top: 19px;
+    color: #7a7a7a;
+  }
+  */
+.sideBar > ul > #loction {
+  margin-top: 26px;
+}
+/* 사이드바 css 추가 */
+
+.custCenter {
+  margin-top: 300px;
+}
+
+.guide {
+  color: #898989;
+}
+
+.content {
+  padding: 0 60px;
+}
+
+.title {
+  font-family: "Jeju Myeongjo", serif;
+  color: #734e39;
+  font-size: 100px;
+  margin-top: 1%;
+  text-align: center;
+
+  padding: 30px 0;
+  width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.main {
+  /* display: grid; */
+  /* padding-left: 120px;
+  padding-bottom: 30px; */
+  grid-template-rows: 100px 0.3fr 0.5fr;
+
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.chart {
+  /* display:</div> grid; */
+  /* margin: 3%;
+  padding-left: 2%;
+  padding-right: 2%; */
+  /* grid-template-columns: 1.2fr 1.5fr 1fr;
+  grid-auto-rows: minmax(200px, auto); */
+  column-gap: 15px;
+
+  display: flex;
+  margin-bottom: 15px;
+  height: 380px;
+}
+
+.gender-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(177, 177, 177);
+  display: flex;
+  flex-direction: column;
+  /* padding: 10px; */
+}
+#gender {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;
+  /* margin-bottom: 12%; */
+}
+#pie-chart {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 18%; */
+  padding: 30px;
+}
+#legend-div {
+  display: flex;
+  justify-content: space-between;
+}
+#legend-div > ul {
+  width: 180px;
+  padding: 0 20px 30px 20px;
+  margin-top: -10px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.no_dot {
+  list-style-type: none;
+}
+
+.monthly-container {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(177, 177, 177);
+}
+#bar-chart {
+  padding: 30px;
+}
+
+#total-sales-text {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px 20px 10px 20px;
+}
+
+#total-sales-won {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 20px;
+  margin-top: 10px;
+}
+#monthly {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;
+}
+#august {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px 20px 10px 20px;
+}
+
+.room-status {
+  padding: 6%;
+}
+
+.mystate {
+  margin: 0;
+  border: none;
+  width: 100%;
+}
+
+.total-sales {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(177, 177, 177);
+  /* margin-right: 70px; */
+  height: 30%;
+  margin-bottom: 10px;
+}
+
+.reservation-status {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(177, 177, 177);
+  /* margin-right: 70px; */
+  height: 253px;
+  /* padding-bottom: 1%; */
+}
+
+.yearly-container {
+  background-color: #ffffff;
+  /*margin: 0 140px;*/
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgb(177, 177, 177);
+  width: 100%;
+}
+
+#Sales-trend {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px 20px 10px 20px;
+}
+
+#line-chart {
+  padding: 30px;
+  width: 100%;
+  /* height: 200px; */
+}
+.progress-bar {
+  background-color: #70b6c1;
+  width: 100px;
+}
+
+.room {
+  margin: 5px;
+}
+#rooms-101 {
+  width: 20%;
+  font-size: 15px;
+}
+
+#rooms-102 {
+  width: 20%;
+
+  font-size: 15px;
+}
+
+#rooms-103 {
+  width: 20%;
+
+  font-size: 15px;
+}
+
+#Sales-trend-won {
+  font-size: 30px;
+  padding-left: 2%;
+  font-weight: bold;
+}
+
+#footer {
+  height: 180px;
+  padding: 30px;
+  color: #7a7a7a;
+  font-size: small;
+  margin-top: 300px;
+}
