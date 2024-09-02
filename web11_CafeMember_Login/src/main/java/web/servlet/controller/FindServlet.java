@@ -38,9 +38,9 @@ public class FindServlet extends HttpServlet {
 		 * 3. 반환 값 받아서 바인딩
 		 * 4. 네비게이션
 		 * */
-		
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=UTF-8");
+//		
+//		request.setCharacterEncoding("utf-8");
+//		response.setContentType("text/html;charset=UTF-8");
 		
 		String id = request.getParameter("id");
 		String path ="find_fail.jsp";
