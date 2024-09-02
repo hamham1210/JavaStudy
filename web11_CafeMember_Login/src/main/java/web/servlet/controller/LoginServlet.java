@@ -20,8 +20,8 @@ public class LoginServlet extends HttpServlet {
        
   
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=UTF-8");
+//		request.setCharacterEncoding("utf-8");
+//		response.setContentType("text/html;charset=UTF-8");
 		
 		//결과 페이지 login_result.jsp
 		//1. login페이지에서 폼값을 받아오기

@@ -1,5 +1,6 @@
 package servlet.controller;
 
+import java.awt.print.Book;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,8 +36,8 @@ public class BookServlet extends HttpServlet {
 		String Author = request.getParameter("bookAuthor");
 		String price =request.getParameter("bookPrice");
 		String Summary=request.getParameter("bookSummary");		
-		Book book = new Book()
-		BookImpl.getinstance().registerBook()
+		Book book = new Book();
+//		BookImpl.getinstance().registerBook();
 	}
 
 }
