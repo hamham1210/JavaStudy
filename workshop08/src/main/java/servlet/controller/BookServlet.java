@@ -45,7 +45,11 @@ public class BookServlet extends HttpServlet {
 		}else if(command.equals("searchBook")) {
 			path=searchBook(request,response);
 			System.out.println("searchBook");
+		}else if(command.equals("searchDetail")) {
+			path=searchDetail(request,response);
+			System.out.println("searchDetail");
 		}
+		
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 	
@@ -68,6 +72,20 @@ public class BookServlet extends HttpServlet {
 		String path="book.html";
 		String cond = request.getParameter("bookCategory");
 		String condDesc = request.getParameter("condDesc");
+		System.out.println(cond+","+condDesc);
+		try {
+			ArrayList<Book> list = BookImpl.getInstance().searchBook(cond,condDesc);
+			request.setAttribute("list", list);
+			path="booklist.jsp";
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return path;
+	}
+	private String searchDetail(HttpServletRequest request, HttpServletResponse response) {
+		String path="book.html";
+		String cond = "title";
+		String condDesc = request.getParameter("title");
 		System.out.println(cond+","+condDesc);
 		try {
 			ArrayList<Book> list = BookImpl.getInstance().searchBook(cond,condDesc);

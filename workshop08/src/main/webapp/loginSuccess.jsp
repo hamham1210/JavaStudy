@@ -14,7 +14,7 @@
 <h2>${user.name}님이 로그인 되었습니다!!!</h2><br><br>
 <a href="book.jsp">도서 등록</a><br><br>
 <a href="login.html" onclick="logout()">로그아웃</a><br><br>
-<a href="front.do?command=showAllBook">도서 리스트</a>
+<a href="booklist.jsp">도서 리스트</a>
 
 <script type="text/javascript">
 function logout() {
