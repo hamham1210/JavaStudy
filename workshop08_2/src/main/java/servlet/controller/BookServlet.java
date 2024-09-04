@@ -144,10 +144,12 @@ private String register(HttpServletRequest request, HttpServletResponse response
 						Summary);
 				BookImpl.getInstance().registerBook(book);
 				request.setAttribute("book", book);
-				path="front.do?command=showAllBook";
+				request.setAttribute("msg", "책 정보가 정상적으로 저장되었습니다.");
+				path="bookSuccess.jsp";
 			} catch (SQLException e) {
 				System.out.println(e);
-				path="login.html";
+				request.setAttribute("msg", "책 등록 중 오류발생... 정보저장 실패!");
+				path="bookSuccess.jsp";
 			}
 		}
 		return path;

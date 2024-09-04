@@ -17,36 +17,45 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>Insert title here</title>
 <script type="text/javascript">
-$(function(){
-$('.title').on('click',function(){
-		let title =$(this).attr('id');
-		console.log('Sending data:', {'title': title});
-		$.ajax({
-				type:'post',
-				url:'front.do?command=searchTitle',
-				data:{'title':title},
-				 
-				success:function(result){
-				alert(result);
-					let str = result.split(',');
-					$('#bookDetailPage')
-					.html("<h3><font color=crimson>Book 상세정보 출력 :: "
-							+str[1]+" "+str[5]+" "+str[6]
-							+"</font></h3>");
-					
-				},
-				error:function(xhr,status,message){
-					alert("에러났습니다.");
-			}	
-		
-		
-				})//ajax
+	$(function() {
+		$('.title').on(
+				'click',
+				function() {
+					let title = $(this).attr('id');
+					console.log('Sending data:', {
+						'title' : title
+					});
+					$.ajax({
+						type : 'post',
+						url : 'front.do?command=searchTitle',
+						data : {
+							'title' : title
+						},
+
+						success : function(result) {
+							alert(result);
+							let str = result.split(',');
+							$('#bookDetailPage').html(
+									"<h5><font color=crimson>Book 상세정보 출력 :: "
+											+ str[1] + " " + str[2] + " "
+											+ str[6] + "</font></h5>");
+
+						},
+						error : function(xhr, status, message) {
+							alert("에러났습니다.");
+						}
+
+					})//ajax
 				})//on
-				})//load
+	})//load
 </script>
 </head>
 <body>
 	<h2>도서 목록 화면</h2>
+	<c:if test="${ not empty user}">
+		<h4>${user.name}님이되셨습니다.</h4>
+		<a></a>
+	</c:if>
 	<form action="front.do">
 		<input type="hidden" name="command" value="searchBook"> <select
 			name="bookCategory">
@@ -67,17 +76,24 @@ $('.title').on('click',function(){
 			</tr>
 		</thead>
 		<tbody>
-
-			<c:forEach items="${list}" var="item">
+			<c:choose>
+				<c:when test="${list.size()==0}">
 				<tr>
-					<td>${item.isbn}</td>
-					<td><a href="#" id="${item.title}" class="title">${item.title}</a>
-					</td>
-					<td>${item.catalogue}</td>
-					<td>${item.author}</td>
+				<td colspan ="4" style="text-align:center; color:red;"><b>등록된 책정보가 없습니다.</b></td>
 				</tr>
-			</c:forEach>
-
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${list}" var="item">
+						<tr>
+							<td>${item.isbn}</td>
+							<td><a href="#" id="${item.title}" class="title">${item.title}</a>
+							</td>
+							<td>${item.catalogue}</td>
+							<td>${item.author}</td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 
 		</tbody>
 	</table>

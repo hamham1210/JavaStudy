@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Java Call</title>
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		$("#exec1").click(function() {
+			var words = $("#words").val();
+			$.ajax({
+			type:'post',
+			url:'front.do?command=count',
+			data:{'words':words},
+			
+			success:function(result){
+				$('#result1').html(result);
+				
+			},
+			error:function(xhr,status,message){
+			alert("error:"+message);
+				}
+			})//ajax
+
+							
+		});//click		
+		
+		$("#exec2").click(function() {
+			var fname = $("#fname").val();
+			$.ajax({
+				type:'post',
+				url:'front.do?command=kickboard',
+				data:{'fname':fname},
+				
+				success:function(result){
+					$('#result2').html(result);
+					
+				},
+				error:function(xhr,status,message){
+				alert("error:"+message);
+					}
+				})//ajax
+					
+		});	//click
+		
+	});
+</script>
+
+</head>
+<body>
+    <h2>메인 페이지</h2>
+	<div class="container">
+		
+		<div id="q1"  class="quest">
+				<h2>단어세기</h2>
+				<div><span id="ins">입력 문자열 : </span><textarea  id="words" cols="45" rows="5"></textarea> </div>
+				<div><input type="button" id="exec1" class="button button4" value="실 행"> 가장 많이 나온 단어 :	<span id="result1"  ></span></div>			
+		</div>
+		<div id="q2" class="quest">
+			<h2>Kickboard</h2>
+			<div><span class="kick">입력 파일명:</span><input type="text" id="fname" ></div>
+			<div> <input type="button"	id="exec2" class="button button4" value="실 행"> 갈수 있는 경로의 수 : <span id="result2">  </span></div>
+		</div>
+	</div>
+</body>
+</html>

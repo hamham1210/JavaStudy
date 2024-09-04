@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Draggable - Default functionality</title>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.14.0/themes/sunny/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<style>
+#cart{
+
+width:400px;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+<script>
+	$(function() {
+		
+		$('accordion').accordion({
+		heigtStyle:'content'
+		})
+		$("#catalogue li").draggable({
+			appendTo:'#cart'
+		});
+		$('#cart ol').droppable({
+		      drop: function( event, ui ) {
+				$(this).find('.placeholder').remove();
+		        let uidrag = ui.draggable.text();
+		        $(this).append(uidrage);
+		        }
+		      });
+		
+		
+		
+		
+	});
+</script>
+</head>
+<body>
+	<div id="shop">
+		<h2>Shop Catalogue</h2>
+		<!-- 드래그 하는 대상들  -->
+		<div id="accordion">
+		<div id="catalogue">
+			<h4>
+				<a href="#">상의류</a>
+			</h4>
+			<div>
+			<ul>
+				<li>블라우스</li>
+				<li>셔츠정장</li>
+				<li>니트티</li>
+				<li>가디건</li>
+				<li>버버리</li>
+			</ul>
+			</div>
+			<h4>
+				<a href="#">하의류</a>
+			</h4>
+			<ul>
+				<li>스커트</li>
+				<li>바지정장</li>
+				<li>숏팬츠</li>
+				<li>버건팬츠</li>
+				<li>버버리</li>
+			</ul>
+		</div>
+		</div>
+</div>
+
+<!-- 카트 놓을 위치 -->
+<div id="cart">
+<h2>Colthing cart </h2>
+<div>
+<ol>
+<li>Drop here</li>
+</ol>
+</div>
+
+
+</div>
+
+	
+</body>
+</html>
