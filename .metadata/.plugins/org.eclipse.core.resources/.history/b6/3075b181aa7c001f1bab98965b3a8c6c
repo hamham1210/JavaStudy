@@ -1,0 +1,11 @@
+package com.service.mybatis.unit;
+
+public class MyBatisMemberTestApp {
+
+	public static void main(String[] args) {
+		
+		
+		
+	}
+
+}

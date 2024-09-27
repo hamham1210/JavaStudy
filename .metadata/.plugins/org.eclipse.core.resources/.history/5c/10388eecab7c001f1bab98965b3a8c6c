@@ -1,0 +1,20 @@
+package com.service.mybatis.unit;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import spring.service.domain.MemberVO;
+
+public class MyBatisMemberTestApp {
+	
+	public static void main(String[] args) {
+		SqlSessionFactory factory = FactoryService.getFactory();
+		SqlSession session=factory.openSession();
+		List<MemberVO> list= session.selectList("MemberVOmapper.memberList");
+		
+		list.stream().forEach(c->System.out.println(c));
+	}
+
+}

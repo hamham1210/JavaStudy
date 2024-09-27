@@ -1,0 +1,13 @@
+package com.service.mybatis.unit;
+
+import org.apache.ibatis.session.SqlSession;
+
+public class MyBatisMemberTestApp {
+
+	public static void main(String[] args) {
+		SqlSession session=factory.openSession();
+		
+		
+	}
+
+}

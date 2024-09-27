@@ -1,0 +1,30 @@
+package com.service.mybatis.unit;
+
+import java.io.IOException;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.mysql.cj.Session;
+
+import spring.service.domain.MemberVO;
+
+public class MyBatisMemberTestApp {
+	
+	public static void main(String[] args) throws IOException {
+	SqlSessionFactory factory =FactoryService.getFactory();
+		MemberVO pvo = new MemberVO("sawon","1234");
+	//3)SqlSession 생성
+	/*
+	 * SqlSession session =factory.openSession();
+	 * session.insert("MemberVOmapper.memberAdd",pvo);
+	 */
+			
+			System.out.println(pvo.getName()+"님 등록 성공하였습니다.");
+			session.selectList("MemberVOmapper.memberList")
+			.forEach(c->System.out.println(c));
+			
+			session.commit();
+			session.close();
+}
+}
