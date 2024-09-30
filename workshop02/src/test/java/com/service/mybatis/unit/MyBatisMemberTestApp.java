@@ -12,7 +12,9 @@ public class MyBatisMemberTestApp {
 	public static void main(String[] args) {
 		SqlSessionFactory factory = FactoryService.getFactory();
 		SqlSession session=factory.openSession();
-		
+		MemberVO mem = new MemberVO("workshop02","workshop01","workshop01","workshop01");
+		System.out.println("멤버 추가 확인");
+		System.out.println(session.insert("MemberVOmapper.memberAdd",mem));
 		//1. memberList 전체 보기
 		System.out.println("::1. memberList 전체 보기");
 		List<MemberVO> list= session.selectList("MemberVOmapper.memberList");

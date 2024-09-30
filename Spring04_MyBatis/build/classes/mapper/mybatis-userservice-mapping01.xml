@@ -6,12 +6,12 @@
 <mapper namespace="UserMapper01">
 	<select id="getUser" parameterType="string" resultType="user">
 		SELECT
-		user_id AS userId,
-		user_name AS userName,
+		user_id 
+		user_name 
 		password,
 		age,
 		grade,
-		reg_date As regDate
+		reg_date
 		FROM users
 		WHERE user_id=#{VALUE}
 	</select>

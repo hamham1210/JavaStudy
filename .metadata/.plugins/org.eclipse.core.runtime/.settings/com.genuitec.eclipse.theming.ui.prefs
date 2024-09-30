@@ -1,9 +1,12 @@
 applyBackground=false
 approved.defs.file.last.changed.time=1693315978000
+codetogether.announce.displayed=true
 configurationInstallLocation=/C\:/KOSTA_PHR/eclipse/
+ct.reengagement.display.after=1738628377080
 eclipse.preferences.version=1
 iconcolormode=primary
-last.download.attempt.time=1727335769670
-lastConfiguration=1727392977886
+includeThemingInOomph=false
+last.download.attempt.time=1727684735715
+lastConfiguration=1727684726808
 newinstall=true
-workbench.theme=Dark Gray
+workbench.theme=Dark Windows 11

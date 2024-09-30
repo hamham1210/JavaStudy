@@ -6,7 +6,8 @@
 <mapper namespace="UserMapper03">
 	<insert id="addUser" parameterType="user">
 		insert
-		into users(user_id,user_name,password,age,grade,reg_date)
+		into
+		users(user_id,user_name,password,age,grade,reg_date)
 		values(
 		#{userId},
 		#{userName},
@@ -18,10 +19,13 @@
 	</insert>
 	<update id="updateUser" parameterType="user">
 		update users
-		set user_name=#{userName}
+		set
+		user_name=#{userName}
 		where user_id=#{userId}
 	</update>
 	<delete id="removeUser" parameterType="string">
-	
+		delete
+		from users
+		where user_id=#{value}
 	</delete>
 </mapper>

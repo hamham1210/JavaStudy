@@ -22,7 +22,7 @@ public class MyBatisTestApp01 {
 		//==> mybatis-userservice-mapping.xml : SQL 를 갖는 설정화일 (MetaData) 
 		
 		//==> 1. xml metadata 읽는 Stream 생성
-		Reader reader=Resources.getResourceAsReader("config/SqlMapConfig2.xml");
+		Reader reader=Resources.getResourceAsReader("config/SqlMapConfig01.xml");
 		//==> 2. Reader 객체를 이용 xml metadata 에 설정된 각정 정보를 접근, 사용가능한 
 		//==>     SqlMapClient  객체 생성
 		
@@ -32,13 +32,13 @@ public class MyBatisTestApp01 {
 		SqlSession session=factory.openSession();
 		List<User> list=session.selectList("UserMapper.getUserList");
 		
-		//0. getUserList :: 모든 user 정보
-		System.out.println(":: 0. all User(SELECT)  ? ");
-		
-		for (int i =0 ;  i < list.size() ; i++) {
-			System.out.println( "<"+ ( i +1 )+"> 번째 회원.."+ list.get(i).toString() );
-		}
-		System.out.println("\n");
+		/*
+		 * //0. getUserList :: 모든 user 정보
+		 * System.out.println(":: 0. all User(SELECT)  ? ");
+		 * 
+		 * for (int i =0 ; i < list.size() ; i++) { System.out.println( "<"+ ( i +1
+		 * )+"> 번째 회원.."+ list.get(i).toString() ); } System.out.println("\n");
+		 */
 
 		//1. getUser :: 특정 userid 정보 (단순 객체)
 		User user = (User)session.selectOne("UserMapper01.getUser", "user01");
