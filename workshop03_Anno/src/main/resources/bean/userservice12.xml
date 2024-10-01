@@ -21,7 +21,7 @@
 	</bean>
 	<!--3. MyBatisFramwork 빈 :: SqlSessionTemplate API Bean 정의 -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
+		<constructor-arg ref="sqlSessionFactoryBean"/>
 	</bean>
 	<!-- @(어노테이션)을 쓸 경우 아래의 context을 써서 container에게 어노테이션을 썼다는 것을 알려서 읽어서 Bean을 만들라는 명령어이다. -->
 	<context:component-scan base-package="spring.service.member.Impl"> </context:component-scan>

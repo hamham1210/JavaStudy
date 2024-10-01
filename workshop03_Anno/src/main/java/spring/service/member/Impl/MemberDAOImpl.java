@@ -31,7 +31,7 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public int deleteMember(String id) {
-		int result = sqlSession.delete(NS+"updateMember",id);
+		int result = sqlSession.delete(NS+"deleteMember",id);
 		return result;
 	}
 

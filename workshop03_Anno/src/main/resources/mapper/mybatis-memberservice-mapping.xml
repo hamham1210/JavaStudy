@@ -53,7 +53,7 @@
 	</select>
 	<!-- 로그인 기능(id, password 일치하는 것이 존재하는지 확인) -->
 	<select id="login" parameterType="memberVO"
-		resultType="memberVO">
+		resultType="boolean">
 		SELECT IF(COUNT(*) = 1, 1, 0)
 		from member
 		where id = #{id}
