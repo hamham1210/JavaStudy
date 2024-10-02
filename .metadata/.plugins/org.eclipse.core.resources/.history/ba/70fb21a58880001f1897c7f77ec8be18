@@ -1,0 +1,31 @@
+package com.service.spring.dao;
+
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.service.spring.domain.Item;
+/*
+ * POJO기반
+ * */
+@Repository
+public class ItemDAO {
+
+	public static final String NS = "ns.sqlFruitMapper";
+	
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	public Item getItem(Integer itemid)throws Exception{
+		
+		
+	}
+	
+	public List<Item> getItemList throws Exception{
+		
+
+	}
+	
+}

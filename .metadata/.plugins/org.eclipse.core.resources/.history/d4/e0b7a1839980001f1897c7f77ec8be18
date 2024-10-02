@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 마지막 mapping.xml 파일	
+	여기에 지금까지 했던 모든 내용을 다 집어넣겠다.
+	resultMap, sql모듈화, 동적쿼리, a select, all select, insert, delete, update-->
+<!-- SQL definition -->
+<mapper namespace="ns.sql.MyProductMapper">
+	
+	<sql id="select-myproduct">
+		select 
+		id,name,maker,price
+		from
+		myproduct
+	</sql>
+	<insert id="addProduct">
+	insert into myproduct values(
+	#{id},
+	#{name},
+	#{maker},
+	#{price}
+	)	
+	</insert>
+	<!-- 상품명으로 검색 :: Like 연산자와 와일드 카드 사용 -->
+	<select id="findProductByName" parameterType="string" resultType="myproduct">
+	<include refid="select-myproduct"/>
+	where name like CONCAT('%',#{value},'%')
+	</select>
+	<!-- 제조사명으로 검색 -->
+	<select id="findProductByMaker" parameterType="string" resultType="myproduct">
+	<include refid="select-myproduct"/>
+	where item_id=#{VALUE}
+	</select>
+	<!-- 모든 상품 검색 -->
+	<select id="findProducts" resultType="myproduct">
+	<include refid="select-myproduct"/>
+	</select>
+</mapper>

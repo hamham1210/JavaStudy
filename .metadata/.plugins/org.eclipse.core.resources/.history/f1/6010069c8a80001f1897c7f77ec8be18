@@ -1,0 +1,20 @@
+package com.service.spring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.service.spring.vo.User;
+
+@Controller
+public class FruitController {
+
+	
+	@RequestMapping("/index.do")
+	public ModelAndView form(User user) {
+		
+		
+		
+		
+	}
+}

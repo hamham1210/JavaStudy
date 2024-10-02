@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+C:\KOSTA_PHR\work07_Maven\.metadata\.plugins\org.eclipse.jdt.core
+1953520198.index
+1017623954.index
+788958036.index
+2347164009.index
+2802535922.index

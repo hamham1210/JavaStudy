@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 마지막 mapping.xml 파일	
+	여기에 지금까지 했던 모든 내용을 다 집어넣겠다.
+	resultMap, sql모듈화, 동적쿼리, a select, all select, insert, delete, update-->
+<!-- SQL definition -->
+<mapper namespace="FruitMapper">
+	<resultMap type="item" id="selectItemRM">
+	<result property="itemNumber" column="item_id"/>
+	<result property="name" column="item_name"/>
+	<result property="price" column="price"/>
+	<result property="description" column="description"/>
+	<result property="url" column="picture_url"/>
+	<result property="count" column="count"/>
+	</resultMap>
+	<sql id="select-item">
+		select 
+		item_id,item_name, price, description, picture_url
+		from
+		item
+	</sql>
+	<select id="getItemList" resultMap="selectItemRM">
+	<include refid="select-itme"/>
+	</select>
+	<select id="getItem" parameterType="int" resultMap="selectItemRM">
+	<include refid="select-itme"/>
+	where item_id=${VALUE}
+	</select>
+</mapper>

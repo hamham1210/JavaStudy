@@ -1,0 +1,17 @@
+package com.service.spring.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
+
+/*
+ * Controller를 작성하는 방법
+ * 1. Controller 인터페이스를 상속
+ * 2. POJO로 만드는 방법!!!-->@Annotation
+ * */
+@Controller
+public class IndexController {
+
+	public ModelAndView doIndex() {
+
+	}
+}

@@ -1,0 +1,5 @@
+package com.service.spring.dao;
+
+public class MyProductDAO {
+	public static final String NS = "ns.sql.MyProductMappe.";
+}

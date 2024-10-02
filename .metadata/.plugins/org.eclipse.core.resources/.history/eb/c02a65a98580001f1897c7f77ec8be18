@@ -1,0 +1,29 @@
+package com.service.spring.test;
+
+import java.io.Reader;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.service.spring.domain.Item;
+
+public class MyBatisJUnitTest02 {
+
+	
+	public void unit() throws Exception{
+		Reader r = Resources.getResourceAsReader("config/SqlMapConfig.xml");
+		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(r);
+		SqlSession session = factory.openSession();
+		
+		
+		List<Item> list = session.selectList("FruitMapper.getItemList");
+		for(Item i:list)System.out.println(i);
+		
+		Item oneitem = session.selectOne("FruitMapper.getItem",1111);
+		
+		System.out.println(oneitem);
+	}
+}
