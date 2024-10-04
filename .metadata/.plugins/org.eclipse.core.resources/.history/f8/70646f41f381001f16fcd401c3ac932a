@@ -1,0 +1,39 @@
+package com.service.spring;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.service.spring.dao.MyProductDAO;
+import com.service.spring.domain.MyProduct;
+import com.service.spring.service.MyProductService;
+
+public class MyBatisDITest {
+	//myBatis와DI연동 부분의 단위테스트... 빈 설정문서를 읽어야한다.
+	
+	ApplicationContext factory =
+			new ClassPathXmlApplicationContext("/bean/beans.xml");
+	@Test
+	public void addTest() {
+		
+		
+		//IOC로부터 MyProductDAO 객체를 반환
+		MyProductService service= (MyProductService) factory.getBean("myProductService");
+		
+		MyProduct pvo = new MyProduct("공기청정기","LG",10000000);
+		
+		System.out.println("=====================1. add======================");
+		service.addProduct(pvo);//sqlSession의 insert호출-->디비 작업
+	}
+	
+	public void findTest() {
+		MyProductService service = (MyProductService) factory.getBean("myProductService");
+		MyProduct list1 = service.findProductByName("세탁기");
+		for (MyProduct p : list1) {
+			System.out.println(p);
+			
+		}
+	}
+}

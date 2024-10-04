@@ -1,0 +1,44 @@
+package com.service.spring.test;
+
+import java.io.Reader;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
+
+import com.service.spring.domain.Book;
+import com.service.spring.domain.User;
+
+
+public class MyBatisBookUnitTest {
+
+	@Test
+	public void unit() throws Exception{
+		Reader r = Resources.getResourceAsReader("config/SqlMapConfig.xml");
+		SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(r);
+		SqlSession session = factory.openSession();
+		
+		Book book = new Book("4444-333-333","마이바티스 연습","코딩","한국","2024-10-04","kosta","혜린",10000,"스프링으로가는중");
+		System.out.println("=========1.insertBook===============");
+		System.out.println(session.insert("ns.sql.BookMapper.insertBook",book));
+		
+		System.out.println("=========2.getBooks===============");
+		List<Book> list = session.selectList("ns.sql.BookMapper.getBooks");
+		for(Book b :list) {
+		System.out.println(b);
+		}
+		System.out.println("=========3.searchByTitle===============");
+		List<Book> list2 = session.selectList("ns.sql.BookMapper.searchByTitle","404");
+		for(Book b :list2) {
+			System.out.println(b);
+			}
+	
+	
+	
+	
+	}
+	
+}

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ns.sql.BookMapper">
+	<resultMap type="book" id="selectRM">
+		<result property="isbn" column="isbn" />
+		<result property="title" column="title" />
+		<result property="catalogue" column="catalogue" />
+		<result property="nation" column="nation" />
+		<result property="publishDate" column="publish_date" />
+		<result property="author" column="author" />
+		<result property="price" column="price" />
+		<result property="currency" column="currency" />
+		<result property="description" column="description" />
+	</resultMap>
+
+	<sql id="select-book">
+		select
+		isbn,title,catalogue,nation,publish_date,publisher,author,price,currency,description
+		from book
+	</sql>
+	<insert id="insertBook" parameterType="book">
+		insert
+		book(isbn,title,catalogue,nation,publish_date,publisher,author,price,currency,description)
+		values
+		(#{isbn},#{title},#{catalogue},#{nation},#{publishDate},#{author},#{price},#{currency},#{description})
+	</insert>
+
+	<select id="getBooks" resultMap="selectRM">
+		<include refid="select-book" />
+	</select>
+
+	<select id="searchByTitle" parameterType="string"
+		resultMap="selectRM">
+		<include refid="select-book" />
+		where title=#{value}
+	</select>
+
+	<select id="searchByPublisher" parameterType="string"
+		resultMap="selectRM">
+		<include refid="select-book" />
+		where Publisher=#{value}
+	</select>
+
+	<!-- 특정 가격 이상인 책만 검색 -->
+	<select id="searchByPrice" parameterType="int"
+		resultMap="selectRM">
+		<include refid="select-book" />
+		<where>
+			<choose>
+				<!-- 가격이 0에서 10000원 사이인 경우 -->
+				<when test="value == 1">
+					price BETWEEN 0 AND 10000
+				</when>
+				<!-- 가격이 10000원에서 50000원 사이인 경우 -->
+				<when test="value == 2">
+					price BETWEEN 10001 AND 50000
+				</when>
+				<!-- 가격이 50000원에서 100000원 사이인 경우 -->
+				<when test="value == 3">
+					price BETWEEN 50001 AND 100000
+				</when>
+				<!-- 그 외의 경우: 가격이 100000원 이상 -->
+				<otherwise>
+					price > 100000
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+
+	<select id="searchByIsbn" parameterType="string"
+		resultMap="selectRM">
+		<include refid="select-book" />
+		where isbn=#{value}
+	</select>
+
+	<delete id="delete" parameterType="string">
+		delete from book where title=#{value}
+	</delete>
+
+	<select id="getIsbn" parameterType="string" resultType="string">
+		select isbn from book where isbn = #{value}
+	</select>
+
+	<!-- 특정 isbn에 해당하는 Book의 title,author, description 정보 수정하기 -->
+	<update id="update" parameterType="book">
+		UPDATE book
+		SET title = #{title},author=#{author},description=#{description}
+		WHERE isbn =#{isbn}
+	</update>
+</mapper>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

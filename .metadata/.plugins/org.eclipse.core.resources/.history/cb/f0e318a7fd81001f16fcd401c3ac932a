@@ -1,0 +1,41 @@
+package com.service.spring.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.service.spring.domain.MyProduct;
+import com.service.spring.service.MyProductService;
+
+
+@Controller
+public class MyProductController {
+	@Autowired
+	private MyProductService myProductService;
+	
+	@RequestMapping("/insertProduct.do")
+	public ModelAndView addProduct(MyProduct pvo) throws Exception {
+		myProductService.addProduct(pvo);
+		
+		//결과 페이지 이름 insert_result.jsp로 포워딩된다.
+		return new ModelAndView("insert_result", "vo", pvo);
+	}
+	
+	@RequestMapping("/findProduct.do")
+	public ModelAndView findProduct(String command, String word) throws Exception {
+		List<MyProduct> list = null;
+		String viewPage = "find_result";
+		if(command.equalsIgnoreCase("findProducts")) {
+			list = myProductService.findProducts();
+		}else if(command.equalsIgnoreCase("findProductByName")) {
+			list = myProductService.findProductByName(word);
+		}else if(command.equalsIgnoreCase("findProductByMaker")) {
+			list = myProductService.findProductByMaker(word);
+		}
+		
+		return new ModelAndView(viewPage,"list",list);
+	}
+}

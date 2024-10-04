@@ -1,0 +1,14 @@
+package com.service.spring;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyBatisDITest {
+	//myBatis와DI연동 부분의 단위테스트... 빈 설정문서를 읽어야한다.
+	@Test
+	public void diTest() {
+		ApplicationContext factory =
+				new ClassPathXmlApplicationContext("/bean/beans.xml");
+	}
+}

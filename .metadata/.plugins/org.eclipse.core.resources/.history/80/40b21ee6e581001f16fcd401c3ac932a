@@ -1,0 +1,40 @@
+package com.service.spring.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.service.spring.dao.MyService;
+import com.service.spring.domain.MyProduct;
+
+@Controller
+public class FormController {
+
+	@Autowired
+	private MyService myservice;
+	
+	
+	@RequestMapping("insert.do")
+	public ModelAndView register(MyProduct myproduct)throws Exception{
+		myservice.addProduct(myproduct);
+		
+		return new ModelAndView("insert");
+	}
+	
+	@RequestMapping("search.do")
+	public ModelAndView search(@RequestParam("type")String type, @RequestParam("query") String query) {
+		ModelAndView result = new ModelAndView();
+		
+		if("name".equals("type")) {
+			myservice.findProductByName(type);
+			result = new ModelAndView("result");
+		}
+		
+		return result;
+	}
+
+	
+	
+}
