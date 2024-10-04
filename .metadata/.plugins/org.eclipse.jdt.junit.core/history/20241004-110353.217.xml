@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="MyBatisDITest" project="workshop04_2" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="com.service.spring.MyBatisDITest" time="0.719">
-    <testcase name="addTest" classname="com.service.spring.MyBatisDITest" time="0.079"/>
-    <testcase name="findTest" classname="com.service.spring.MyBatisDITest" time="0.64"/>
-  </testsuite>
-</testrun>
