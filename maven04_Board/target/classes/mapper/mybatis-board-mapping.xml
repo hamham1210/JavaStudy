@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ns.sql.Board">
+	<resultMap id="boardListRM" type="board">
+		<id property="no" column="no"/>
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="writeDate" column="w_date"/>
+		<result property="count" column="count" />
+		<association property="member" javaType="member">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="password" column="password"/>
+		<result property="address" column="address"/>
+		</association>
+	</resultMap>
+	<!-- 게시글 등록... no는 자동 완성... board id(member의 컬럼) -->
+	<insert id="write" parameterType="board" useGeneratedKeys="true"
+		keyProperty="no">
+		insert into springboard(title, content, w_date,id)
+		values(#{title},#{content},curdate(),#{member.id})
+	</insert>
+
+	<!-- 특정 게시글이 입력된 날짜를 디비에서 받아오는 쿼리문.. -->
+	<select id="selectByNoForDate" parameterType="int"
+		resultType="string">
+		select w_date
+		from springboard
+		where no = #{value}
+	</select>
+	<!--전체 게시물 보기 -->
+	<select id="getBoardList" resultMap="boardListRM">
+		select 
+		b.no, b.title, b.count, b.w_date,m.name
+		from springboard b, member m
+		where b.id= m.id
+		order by no desc
+	</select>
+	<!-- 상세보기용  resultMap -->
+	<resultMap type="board" id="boardRM" extends="boardListRM">
+	<result property="content" column="content"/>
+	<result property="member.id" column="id"/>
+
+	</resultMap>
+	<!-- 특정 게시글 상세보기 ::content, id -->
+	<select id="showContent" resultMap="boardRM" parameterType="int">
+		select
+		b.no, b.title, b.count, b.w_date, b.content, m.id, m.name
+		from springboard b, member m
+		where b.id= m.id and b.no =#{value}
+		order by no desc
+	</select>
+
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM springboard
+		WHERE no=#{VALUE}
+	</delete>
+	<update id="updateCount" parameterType="int">
+		UPDATE springboard SET
+		count = count+1 WHERE no=#{VALUE}
+	</update>
+	<update id="updateBoard" parameterType="board">
+		UPDATE springboard SET
+		title=#{title}, content=#{content}
+		WHERE no=#{no}
+	</update>
+</mapper>
