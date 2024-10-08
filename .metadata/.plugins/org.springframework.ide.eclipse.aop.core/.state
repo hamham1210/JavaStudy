@@ -5,5 +5,9 @@
 <aop-project name="workshop04_2"/>
 <aop-project name="workshop01"/>
 <aop-project name="workshop05"/>
+<aop-project name="workshp05"/>
+<aop-project name="workshop06"/>
 <aop-project name="Maven03_Fruits"/>
+<aop-project name="workshop06_daynamic"/>
+<aop-project name="maven04_Board"/>
 </aop-reference-model>

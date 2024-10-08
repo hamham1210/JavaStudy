@@ -18,8 +18,14 @@ public class BoardService {
 	
 	
 	
-	public void write(Board board) {
-		boardDao.write(board);
+	public int write(Board board) {
+		System.out.println("no,date 설정 전"+board);
+		int row =boardDao.write(board);
+		String date = boardDao.selectByNoForDate(board.getNo());
+		board.setWriteDate(date);
+		
+		System.out.println("date 설정 후"+board);
+		return row;
 	}
 	
 	public List<Board> getBoardList(){

@@ -15,7 +15,10 @@
 		<result property="address" column="address"/>
 		</association>
 	</resultMap>
-	<!-- 게시글 등록... no는 자동 완성... board id(member의 컬럼) -->
+	<!-- 게시글 등록... no는 자동 완성... board id(member의 컬럼) 
+		useGeneratedKeys="true" 게시글 입력할때 디비에서 자동으로 값을 증가시켜라
+		 keyProperty="no"증가된 no,board.setNo()..여기서 자동증가된 no가 board가 주입-->
+		 <!-- 결과적으로 pvo와 디비의 동기화  자동증가, pk일 경우는 자동 증가가 중요하다.-->
 	<insert id="write" parameterType="board" useGeneratedKeys="true"
 		keyProperty="no">
 		insert into springboard(title, content, w_date,id)

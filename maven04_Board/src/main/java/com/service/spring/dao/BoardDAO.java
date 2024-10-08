@@ -15,8 +15,8 @@ public class BoardDAO {
 	private SqlSession sqlsession;
 	
 	public static final String NS = "ns.sql.Board.";
-	public void write(Board board) {
-		sqlsession.insert(NS+"write", board);
+	public int write(Board board) {
+		 return sqlsession.insert(NS+"write", board);
 	}
 	
 	public List<Board> getBoardList(){
