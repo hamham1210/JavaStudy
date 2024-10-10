@@ -1,0 +1,4 @@
+spring.application.name=boot01_RestController
+
+server.port=9000
+server.servlet.context-path=boot/

@@ -1,0 +1,26 @@
+package com.web.spring.controller;
+
+import java.lang.reflect.Member;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+/*
+ * 단순한 페이지를 요청하는 Get방식의 Controller를 다뤄보겠다.
+ * 
+ * 
+ * 
+ * */
+
+
+@RestController
+public class GetController {
+
+	@GetMapping("/members")
+	public String getMember(Member member) {
+		
+		
+		return null;
+		
+	}
+	
+}
