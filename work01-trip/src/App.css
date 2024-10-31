@@ -1,0 +1,29 @@
+.trip-box{
+  border: 5px solid black;
+  border-color: black;
+  color: black;
+  font-size: small;
+  display: flexbox;
+  flex-direction: column;
+  
+  justify-items: center;
+  flex-wrap: wrap;
+  padding: 3%;
+  margin: 5% 0;
+}
+
+.image-box{
+  display: flex;
+  margin-top: 100px;
+}
+
+.img{
+  border: 5px solid blue;
+  border-radius: 5%;
+
+}
+.img2{
+  border: 5px solid blue;
+  border-radius: 5%;
+  margin:0 3%;
+}
