@@ -1,5 +1,0 @@
-spring.application.name=boot02_Controller
-#server port
-server.port=9000
-
-#Jsp result path
